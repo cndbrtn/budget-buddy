@@ -1,32 +1,39 @@
 const router = require('express').Router()
-const BudgetItem = require('../models/budgetItem.js')
-const Month = require('../models/month')
+const { Month, BudgetItem, IncomeItem } = require('../models')
 
 router.get('/api/budget/:month', (req, res) => {
-    Month.find({ month: req.params.month }).populate('items')
+    Month.find({ month: req.params.month }).populate('items income')
         .then(month => {
             res.json(month)
             console.log(month)
         })
 })
-
-router.post('/api/month/:id', ({body, params}, res) => {
-    console.log('api/budget params.id', params.id)
-    console.log('/api/budget/:id body', { body })
+// post route for expenses (outgoing $$$)
+router.post('/api/budget/month/:id', ({ body, params }, res) => {
+    // console.log('body', body)
     BudgetItem.create({ ...body })
         .then(budget => {
             res.json(budget)
-            console.log('budget response', budget)
+            // console.log('budget response', budget)
             return Month.findOneAndUpdate({ _id: params.id }, { $push: { items: budget._id } }, { new: true })
     })
 })
+// post route for income (incomeing $$$)
+router.post('/api/income/month/:id', ({ body, params }, res) => {
+    // console.log('body', body)
+    IncomeItem.create({ ...body })
+        .then(income => {
+            res.json(income)
+            // console.log('income response', income)
+            return Month.findOneAndUpdate({ _id: params.id }, { $push: { income: income._id } }, { new: true })
+        })
+})
 
-router.put('/api/month/:id', (req, res) => {
-    console.log('update month with budget item req.body', req.body)
-    console.log('update month with budget item req.params', req.params)
-    Month.update({ _id: req.params.id }, { $push: req.body })
+router.put('/api/budget/:id', (req, res) => {
+    BudgetItem.update({ _id: req.params.id }, { $push: req.body })
         .then(month => {
-        console.log('updated month', month)
+            console.log('updated month', month)
+            res.json(month)
     })
 })
 

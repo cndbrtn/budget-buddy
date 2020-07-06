@@ -1,4 +1,5 @@
 module.exports = {
     BudgetItem: require('./budgetItem'),
-    Month: require('./month')
+    Month: require('./month'),
+    IncomeItem: require('./incomeItem')
 }

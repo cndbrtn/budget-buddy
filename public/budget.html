@@ -3,50 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
     <title>Budget Buddy</title>
 </head>
 <body>
     <div class="container">
-        <h1>Budget Tracker</h1>
+        <div class="budget-header">
+            <h1>Budget Tracker</h1>
+        </div>
+        <div class="sidebar">
+            <h3>Expenses:</h3>
+            <div id="budget-list">
+                <!-- Budget details go here -->
+            </div>
+            <h3>Income:</h3>
+            <div id="income-list">
+                <!-- Income details go here -->
+            </div>
+        </div>
         <div class="main">
-            <div class="form"></div>
-            <form>
-                <div>
-                    <label for="amount">$$$: </label>
-                    <input type="text" name="amount" id="amount">
-                </div>
-                <div>
-                    <label for="category">For: </label>
-                    <select name="category" id="category">
-                        <option>Choose a category...</option> 
-                        <option value="mortgage">Mortgage</option>
-                        <option value="groceries">Grocers</option>
-                        <option value="pharmacy">Pharmacy</option>
-                        <option value="hoa fees">HOA Fees</option>
-                        <option value="electricity">electricity</option>
-                        <option value="internet">Internet</option>
-                        <option value="credit cards">Credit cards</option>
-                        <option value="subscriptions">Subscriptions</options>
-                        <option value="pet supplies">Pet Supplies</option>
-                        <option value="entertainment">Entertainment</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="notes">Notes: </label>
-                    <textarea name="notes" id="notes" placeholder="notes about each transaction go here"></textarea>
-                </div>
-                <div>
-                    <button id="budget-submit">Submit</button>
-                </div>
-            </form>
+            <div class="form">
+                <form>
+                    <div>
+                        <label for="amount">$$$: </label>
+                        <input type="text" name="amount" id="amount">
+                    </div>
+                    <div>
+                        <label for="category">For: </label>
+                        <select name="category" id="category">
+                            <option value="Income">Income</option>
+                            <option>-----------</option>
+                            <option value="Mortgage">Mortgage</option>
+                            <option value="Groceries">Groceries</option>
+                            <option value="Pharmacy">Pharmacy</option>
+                            <option value="HOA Fees">HOA Fees</option>
+                            <option value="Electricity">Electricity</option>
+                            <option value="Internet">Internet</option>
+                            <option value="Credit Cards">Credit Cards</option>
+                            <option value="Subscriptions">Subscriptions</options>
+                            <option value="Pet Supplies">Pet Supplies</option>
+                            <option value="Entertainment">Entertainment</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="notes">Notes: </label>
+                        <textarea name="notes" id="notes" placeholder="notes about each transaction go here"></textarea>
+                    </div>
+                    <div>
+                        <button id="budget-submit">Submit</button>
+                    </div>
+                </form>
+            </div>
             <div>
-                <canvas id="chart" height="500px" width="500px">
-                </canvas>
+                <canvas id="expense-chart"></canvas>
+                <canvas id="income-chart"></canvas>
             </div>
         </div>
     </div>
+    <canvas id="granim-canvas"></canvas>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.min.js"></script>
+    <script src="/granim.js"></script>
     <script src="/index.js"></script>
     <script src="/budget.js"></script>
 </body>

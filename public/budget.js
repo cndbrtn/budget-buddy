@@ -22,61 +22,97 @@ const colors = [
 ]
 
 $('#budget-submit').on('click', () => {
-    const newItem = {
-        amount: $('#amount').val(),
-        category: $('#category').val(),
-        notes: $('#notes').val(),
-        month: id
+    if ($('#category').val() === 'Income') {
+        const newIncome = {
+            amount: $('#amount').val(),
+            category: $('#category').val(),
+            notes: $('#notes').val(),
+            month: id
+        }
+        $.post(`/api/income/month/${id}`, newIncome)
+    } else {
+        const newItem = {
+            amount: $('#amount').val(),
+            category: $('#category').val(),
+            notes: $('#notes').val(),
+            month: id
+        }
+        $.post(`/api/budget/month/${id}`, newItem)
     }
-
-    $.post(`/api/month/${id}`, newItem)
 })
 
 $.get(`/api/budget/${month}`)
     .then(data => {
-        const looseBudget = budgetItems(data)
-        console.log('get data', data)
+        const looseBudget = budgetItems(data[0].items)
+        const looseIncome = budgetItems(data[0].income)
+        const tightB = tightBudget(looseBudget)
+        const tightI = tightBudget(looseIncome)
 
-        // console.log('getCats', getCats(data))
+        const allTotal = incomeVsExpenseCalc(tightI[0], tightB)
+        console.log('allTotal', allTotal)
+        // console.log('tight budget', tightB)
 
-        const tightBudget = () => {
-           const budgetSums = looseBudget.reduce((object, item) => {
-                const category = item.category
-                const amount = parseFloat(item.amount)
-                if (!object.hasOwnProperty(category)) {
-                    object[category] = 0
-                }
+        const listEl = $('#budget-list')
+        const incomeEl = $('#income-list')
 
-                object[category] += amount
-                return object
-           }, {})
-            
-            const sums = Object.keys(budgetSums).map(key => budgetSums[key]);
-            return sums
+        for (let res of data[0].items) {
+            listEl.append(`
+            <ul id=${res._id}>
+                <li>Amount: $${res.amount}</li>
+                <li>Category: ${res.category}</li>
+                <li>Notes: ${res.notes}</li>
+            </ul>
+            `)
+        }
+
+        for (let res of data[0].income) {
+            incomeEl.append(`
+            <ul id=${res._id}>
+                <li>Amount: $${res.amount}</li>
+                <li>Notes: ${res.notes}</li>
+            </ul>
+            `)
         }
 
         if (!data[0].items.length) {
             console.log('welcome to the if')
-            const canvas = $('#chart')
+            const canvas = $('#expense-chart')
             const ctx = canvas[0].getContext('2d')
             ctx.font = '18pt Helvetica'
-            ctx.fillText('Add an expense to start your budget', 20, 50)
+            ctx.fillText('Add an expense to start your budget', 5, 50)
             return
         }
         // console.log('tight budget', tightBudget())
-        const ctx = $('#chart')
-        const myBudget = new Chart(ctx, {
+        const pie1 = $('#expense-chart')
+        const pie2 = $('#income-chart')
+
+        // const expCanvas = expenseChart[0].getContext('d2')
+        // const incCanvas = incomeChart[0].getContext('d2')
+
+        const myBudget = new Chart(pie1, {
             type: 'pie',
             data: {
                 labels: getCats(data),
                 datasets: [{
-                    data: tightBudget(),
+                    data: tightB,
                     backgroundColor: colors,
                     label: "Monthly Budget"
                 }],
             },
             options: {
                 
+            }
+        })
+
+        const myIncome = new Chart(pie2, {
+            type: 'pie',
+            data: {
+                labels: ['Total Income', 'Total Expenses'],
+                datasets: [{
+                    data: allTotal,
+                    backgroundColor: ['#91ffe5', '#b481fc'],
+                    label: 'Income vs. Expenses'
+                }]
             }
         })
     })
@@ -95,9 +131,33 @@ const getCats = data => {
 
 const budgetItems = data => {
     let items = []
-    data[0].items.map(budget => {
+    data.map(budget => {
         items.push({ amount: budget.amount, category: budget.category })
     })
     return items
 }
 
+const tightBudget = data => {
+    const budgetSums = data.reduce((object, item) => {
+        const category = item.category
+        const amount = parseFloat(item.amount)
+        if (!object.hasOwnProperty(category)) {
+            object[category] = 0
+        }
+
+        object[category] += amount
+        return object
+    }, {})
+
+    const sums = Object.keys(budgetSums).map(key => budgetSums[key]);
+    return sums
+}
+
+const incomeVsExpenseCalc = (income, expenses) => {
+    // const totalIncome = income.reduce((a, b) => a + b, 0)
+    const totalExpenses = expenses.reduce((a, b) => a + b, 0) 
+
+    const incVsExp = [income, totalExpenses]
+
+    return incVsExp
+}

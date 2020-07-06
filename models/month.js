@@ -13,6 +13,12 @@ const MonthSchema = new Schema(
                 type: Schema.Types.ObjectID,
                 ref: 'BudgetItem'
             }
+        ],
+        income: [
+            {
+                type: Schema.Types.ObjectID,
+                ref: 'IncomeItem'
+            }
         ]
     }
 )

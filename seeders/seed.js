@@ -9,51 +9,63 @@ mongoose.connect('mongodb://localhost/budgetbuddy', {
 let monthSeed = [
     {
         month: 'January',
-        items: []
+        items: [],
+        income: []
     },
     {
         month: 'February',
-        items: []
+        items: [],
+        income: []
     },
     {
         month: 'March',
-        items: []
+        items: [],
+        income: []
     },
     {
         month: 'April',
-        items: []
+        items: [],
+        income: []
     },
     {
         month: 'May',
-        items: []
+        items: [],
+        income: []
     },
     {
         month: 'June',
-        items: []
+        items: [],
+        income: []
     },
     {
         month: 'July',
-        items: []
+        items: [],
+        income: []
     },
     {
         month: 'August',
-        items: []
+        items: [],
+        income: []
     },
     {
         month: 'September',
-        items: []
+        items: [],
+        income: []
     },
     {
         month: 'October',
-        items: []
+        items: [],
+        income: []
     },
     {
         month: 'November',
-        items: []
+        items: [],
+        income: []
     },
     {
         month: 'December',
-        items: []
+        items: [],
+        income: []
     }
 ]
 
