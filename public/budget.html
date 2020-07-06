@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Buddy</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Budget Tracker</h1>
+        <div class="main">
+            <div class="form"></div>
+            <form>
+                <div>
+                    <label for="amount">$$$: </label>
+                    <input type="text" name="amount" id="amount">
+                </div>
+                <div>
+                    <label for="category">For: </label>
+                    <select name="category" id="category">
+                        <option>Choose a category...</option> 
+                        <option value="mortgage">Mortgage</option>
+                        <option value="groceries">Grocers</option>
+                        <option value="pharmacy">Pharmacy</option>
+                        <option value="hoa fees">HOA Fees</option>
+                        <option value="electricity">electricity</option>
+                        <option value="internet">Internet</option>
+                        <option value="credit cards">Credit cards</option>
+                        <option value="subscriptions">Subscriptions</options>
+                        <option value="pet supplies">Pet Supplies</option>
+                        <option value="entertainment">Entertainment</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="notes">Notes: </label>
+                    <textarea name="notes" id="notes" placeholder="notes about each transaction go here"></textarea>
+                </div>
+                <div>
+                    <button id="budget-submit">Submit</button>
+                </div>
+            </form>
+            <div>
+                <canvas id="chart" height="500px" width="500px">
+                </canvas>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="/index.js"></script>
+    <script src="/budget.js"></script>
+</body>
+</html>
