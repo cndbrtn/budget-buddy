@@ -29,11 +29,12 @@
 
 body, html {
     font-family: 'FixedSys';
+    color: #d780ff;
     /* background-image: url('./spectrum.gif'); */
 }    
 
 .budget-header { grid-area: header; text-align: center; }
-.sidebar { grid-area: sidebar; }
+.sidebar { grid-area: sidebar; text-align: justify; }
 .main { grid-area: main; }
 
 .budget-header h1 {
@@ -42,22 +43,28 @@ body, html {
 
 .sidebar h3 {
     margin: 5px 0 5px 0;
+    color: #ff9cd1;
 }
 
 #budget-list,
 #income-list {
     height: 300px;
     overflow: auto;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    padding: 5px;
+    background: #b481fcaf;
+    color: #ffffff;
 }
 
 .container {
     margin: 0 auto;
     padding: 20px;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.623);
+    background: #ffffff9f;
     /* text-align: center; */
-    width: 750px;
-    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.466);
+    max-width: 750px;
+    box-shadow: 3px 3px 20px #00000077;
     display: grid;
     gap: 10px;
     grid-template-areas: 
@@ -90,12 +97,13 @@ select,
 button,
 input,
 textarea {
-    background: transparent;
+    background: #b481fc80;
     font-size: 18pt;
     border-radius: 5px;
     padding: 5px;
-    border: 1px solid #000;
+    border: 1px solid #ffffff;
     font-family: 'FixedSys';
+    color: #ffffff;
     /* flex: 1; */
 }
 
@@ -116,3 +124,25 @@ ul {
 /* li {
     padding: 0 10px 0 0;
 } */
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  /* padding: 3px; */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #9aff91;
+}
