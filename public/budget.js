@@ -84,8 +84,8 @@ $.get(`/api/budget/${month}`)
             console.log('welcome to the if')
             const canvas = $('#expense-chart')
             const ctx = canvas[0].getContext('2d')
-            ctx.font = '18pt Helvetica'
-            ctx.fillText('Add an expense to start your budget', 5, 50)
+            ctx.font = '10.5pt Arial'
+            ctx.fillText("Nuthin' yet!", 5, 50)
             return
         }
         // console.log('tight budget', tightBudget())
