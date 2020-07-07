@@ -49,11 +49,13 @@ $.get(`/api/budget/${month}`)
         const tightI = tightBudget(looseIncome)
 
         const allTotal = incomeVsExpenseCalc(tightI[0], tightB)
-        console.log('allTotal', allTotal)
+        const remainingMon = allTotal[0] - allTotal[1]
+        console.log('remainingMon', remainingMon)
         // console.log('tight budget', tightB)
 
         const listEl = $('#budget-list')
         const incomeEl = $('#income-list')
+        const totalEl = $('.foot')
 
         for (let res of data[0].items) {
             listEl.append(`
@@ -73,6 +75,10 @@ $.get(`/api/budget/${month}`)
             </ul>
             `)
         }
+
+        totalEl.append(`
+            <h2>Remaing: $${remainingMon}
+        `)        
 
         if (!data[0].items.length) {
             console.log('welcome to the if')
@@ -154,10 +160,7 @@ const tightBudget = data => {
 }
 
 const incomeVsExpenseCalc = (income, expenses) => {
-    // const totalIncome = income.reduce((a, b) => a + b, 0)
     const totalExpenses = expenses.reduce((a, b) => a + b, 0) 
-
     const incVsExp = [income, totalExpenses]
-
     return incVsExp
 }

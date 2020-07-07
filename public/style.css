@@ -34,14 +34,16 @@ body, html {
 }    
 
 .budget-header { grid-area: header; text-align: center; }
-.sidebar { grid-area: sidebar; text-align: justify; }
+.sidebar { grid-area: sidebar; }
 .main { grid-area: main; }
+.foot { grid-area: foot; text-align: center; }
 
 .budget-header h1 {
     margin: 0px;
 }
 
-.sidebar h3 {
+.sidebar h3,
+.form h3 {
     margin: 5px 0 5px 0;
     color: #ff9cd1;
 }
@@ -70,7 +72,8 @@ body, html {
     grid-template-areas: 
     'header header header header header header'
     'sidebar sidebar main main main main'
-    'sidebar sidebar main main main main';
+    'sidebar sidebar main main main main'
+    'foot foot foot foot foot foot';
     /* grid-template-columns: calc(50% - 0.5ch) calc(50% - 0.5ch);
     grid-gap: 1ch; */
 }
@@ -78,7 +81,14 @@ body, html {
 .splash {
     font-size: 25pt;
     padding: 100px 0 100px 0;
+    display: block;
+    text-align: center;
+    padding: 50px;
 }
+
+/* .splash select {
+    display: block;
+} */
 
 /* .sidebar {
     flex-basis: calc(33% - 1rem);

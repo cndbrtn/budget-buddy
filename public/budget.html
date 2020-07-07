@@ -29,11 +29,11 @@
             <div class="form">
                 <form>
                     <div>
-                        <label for="amount">$$$: </label>
+                        <label for="amount"><h3>$$$:</h3></label>
                         <input type="text" name="amount" id="amount">
                     </div>
                     <div>
-                        <label for="category">For: </label>
+                        <label for="category"><h3>For:</h3></label>
                         <select name="category" id="category">
                             <option value="Income">Income</option>
                             <option>-----------</option>
@@ -50,7 +50,7 @@
                         </select>
                     </div>
                     <div>
-                        <label for="notes">Notes: </label>
+                        <label for="notes"><h3>Notes:</h3></label>
                         <textarea name="notes" id="notes" placeholder="notes about each transaction go here"></textarea>
                     </div>
                     <div>
@@ -62,6 +62,9 @@
                 <canvas id="expense-chart"></canvas>
                 <canvas id="income-chart"></canvas>
             </div>
+        </div>
+        <div class="foot">
+            <!-- remaining income after expenses goes here -->
         </div>
     </div>
     <canvas id="granim-canvas"></canvas>
