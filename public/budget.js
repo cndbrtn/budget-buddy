@@ -89,13 +89,13 @@ $.get(`/api/budget/${month}`)
             return
         }
         // console.log('tight budget', tightBudget())
-        const pie1 = $('#expense-chart')
-        const pie2 = $('#income-chart')
+        const pie = $('#expense-chart')
+        const donut = $('#income-chart')
 
         // const expCanvas = expenseChart[0].getContext('d2')
         // const incCanvas = incomeChart[0].getContext('d2')
 
-        const myBudget = new Chart(pie1, {
+        const myBudget = new Chart(pie, {
             type: 'pie',
             data: {
                 labels: getCats(data),
@@ -110,8 +110,8 @@ $.get(`/api/budget/${month}`)
             }
         })
 
-        const myIncome = new Chart(pie2, {
-            type: 'pie',
+        const myIncome = new Chart(donut, {
+            type: 'doughnut',
             data: {
                 labels: ['Total Income', 'Total Expenses'],
                 datasets: [{
@@ -119,6 +119,12 @@ $.get(`/api/budget/${month}`)
                     backgroundColor: ['#91ffe5', '#b481fc'],
                     label: 'Income vs. Expenses'
                 }]
+            },
+            options: {
+                // cutoutPercentage: 75,
+                legend: {
+                    position: 'bottom'
+                }
             }
         })
     })

@@ -59,6 +59,10 @@ body, html {
     color: #ffffff;
 }
 
+#income-chart {
+    margin: 10px 0 0 0;
+}
+
 .container {
     margin: 0 auto;
     padding: 20px;
@@ -86,23 +90,6 @@ body, html {
     padding: 50px;
 }
 
-/* .splash select {
-    display: block;
-} */
-
-/* .sidebar {
-    flex-basis: calc(33% - 1rem);
-    order: 1;
-    grid-column: 1 / 3;
-}
-
-
-
-.main {
-    flex-basis: calc(66% - 1rem);
-    order: 2;
-} */
-
 select,
 button,
 input,
@@ -114,12 +101,11 @@ textarea {
     border: 1px solid #ffffff;
     font-family: 'FixedSys';
     color: #ffffff;
-    /* flex: 1; */
 }
 
-input,
-textarea,
-select {
+.form input,
+.form textarea,
+.form select {
     width: 100%;
 }
 
@@ -127,32 +113,20 @@ ul {
     list-style: none;
     padding: 0;
     text-align: left;
-    /* display: flex; */
-    /* justify-content: center; */
 }
 
-/* li {
-    padding: 0 10px 0 0;
-} */
-
-
-/* width */
 ::-webkit-scrollbar {
   width: 5px;
-  /* padding: 3px; */
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #ffffff;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #9aff91;
 }

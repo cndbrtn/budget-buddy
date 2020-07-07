@@ -2,6 +2,10 @@ var granimInstance = new Granim({
     element: "#granim-canvas",
     direction: "left-right",
     isPausedWhenNotInView: true,
+    image: {
+        source: '/bg.jpg',
+        blendingMode: 'color',
+    },
     states: {
         "default-state": {
             gradients: [
