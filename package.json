@@ -1,8 +1,15 @@
 {
+  "name": "rainbow-budget-buddy",
+  "version": "1.0.0",
+  "author": "CND BRTN",
+  "homepage": "https://rainbow-budget-buddy.herokuapp.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cndbrn/budget-buddy"
+  },
   "dependencies": {
     "chart.js": "^2.9.3",
     "express": "^4.17.1",
-    "jquery": "^3.5.1",
     "mongoose": "^5.9.21"
   },
   "scripts": {
