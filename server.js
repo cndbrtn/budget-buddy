@@ -13,6 +13,10 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/budgetbuddy',
 app.use(require('./routes/api'))
 app.use(require('./routes/html'))
 
+app.use((req, res) => {
+    res.sendfile(path.join(__dirname, '/public/index.html'))
+})
+
 app.listen(PORT, () => {
     console.log(`listening on PORT http://localhost:${PORT}`)
 })
