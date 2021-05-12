@@ -8,7 +8,7 @@
     "url": "git+https://github.com/cndbrn/budget-buddy"
   },
   "dependencies": {
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "express": "^4.17.1",
     "mongoose": "^5.9.21"
   },
